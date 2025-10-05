@@ -55,8 +55,44 @@ export default function Home() {
       } catch (e) {
         console.error("Failed to parse stored registries", e);
       }
+    } else {
+      const envUrl = process.env.NEXT_PUBLIC_REGISTRY_URL;
+      const envUsername = process.env.NEXT_PUBLIC_REGISTRY_USERNAME;
+      const envPassword = process.env.NEXT_PUBLIC_REGISTRY_PASSWORD;
+
+      if (envUrl) {
+        const id = `${envUrl}-env`;
+        const envRegistry: Registry = {
+          id,
+          url: envUrl,
+          username: envUsername,
+          password: envPassword,
+          connected: false,
+          loading: false,
+        };
+        const toSave = [
+          {
+            id: envRegistry.id,
+            url: envRegistry.url,
+            username: envRegistry.username,
+            password: envRegistry.password,
+          },
+        ];
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+        setRegistries([envRegistry]);
+      }
     }
   }, []);
+
+  useEffect(() => {
+    const envUrl = process.env.NEXT_PUBLIC_REGISTRY_URL;
+    if (envUrl && registries.length > 0) {
+      const envRegistry = registries.find((r) => r.id === `${envUrl}-env`);
+      if (envRegistry && !envRegistry.connected && !envRegistry.loading) {
+        handleConnect(envRegistry.id);
+      }
+    }
+  }, [registries]);
 
   const saveToStorage = (regs: Registry[]) => {
     const toSave = regs.map((r) => ({
