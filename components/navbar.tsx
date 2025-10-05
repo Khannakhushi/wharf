@@ -6,6 +6,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { RegistrySwitcher } from "@/components/registry-switcher";
 import { Button } from "@/components/ui/button";
 import { Registry } from "@/components/registry-list";
+import Link from "next/link";
 
 interface NavbarProps {
   connected?: boolean;
@@ -35,28 +36,30 @@ export function Navbar({
       <div className="absolute inset-x-0 bottom-0 h-px glow-line"></div>
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <motion.div
-            className="flex items-center gap-3"
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 400 }}
-          >
-            <div className="relative">
-              <Anchor className="w-8 h-8 text-primary" />
-              <motion.div
-                className="absolute -bottom-1 -right-1"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <Waves className="w-4 h-4 text-primary/60" />
-              </motion.div>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold tracking-tight glow-text">
-                Wharf
-              </h1>
-              <p className="text-xs text-muted-foreground">Docker Registry</p>
-            </div>
-          </motion.div>
+          <Link href="/">
+            <motion.div
+              className="flex items-center gap-3 cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
+              <div className="relative">
+                <Anchor className="w-8 h-8 text-primary" />
+                <motion.div
+                  className="absolute -bottom-1 -right-1"
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <Waves className="w-4 h-4 text-primary/60" />
+                </motion.div>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold tracking-tight glow-text">
+                  Wharf
+                </h1>
+                <p className="text-xs text-muted-foreground">Docker Registry</p>
+              </div>
+            </motion.div>
+          </Link>
 
           <div className="flex items-center gap-4">
             {connected && registryUrl && (

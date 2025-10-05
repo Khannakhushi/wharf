@@ -399,7 +399,7 @@ export default function Home() {
     return (
       <>
         <Navbar />
-        <main className="min-h-[calc(100vh-80px)] flex items-center justify-center p-4 gradient-bg">
+        <main className="flex-1 flex items-center justify-center p-4 gradient-bg">
           <div className="w-full max-w-2xl space-y-6">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -501,7 +501,7 @@ export default function Home() {
           });
         }}
       />
-      <main className="min-h-screen p-4 md:p-8 gradient-bg">
+      <main className="flex-1 p-4 md:p-8 gradient-bg">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
