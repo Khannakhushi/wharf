@@ -84,16 +84,6 @@ export default function Home() {
     }
   }, []);
 
-  useEffect(() => {
-    const envUrl = process.env.NEXT_PUBLIC_REGISTRY_URL;
-    if (envUrl && registries.length > 0) {
-      const envRegistry = registries.find((r) => r.id === `${envUrl}-env`);
-      if (envRegistry && !envRegistry.connected && !envRegistry.loading) {
-        handleConnect(envRegistry.id);
-      }
-    }
-  }, [registries]);
-
   const saveToStorage = (regs: Registry[]) => {
     const toSave = regs.map((r) => ({
       id: r.id,
@@ -109,6 +99,12 @@ export default function Home() {
     username?: string,
     password?: string
   ) => {
+    const existingRegistry = registries.find((r) => r.url === url);
+    if (existingRegistry) {
+      toast.error("Registry already exists");
+      return;
+    }
+
     const id = `${url}-${Date.now()}`;
     const newRegistry: Registry = {
       id,

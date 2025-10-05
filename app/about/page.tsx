@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import { Navbar } from "@/components/navbar";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Container,
   Anchor,
@@ -156,7 +155,7 @@ export default function AboutPage() {
                     registries.
                   </p>
                   <p>
-                    Whether you're managing a single private registry or
+                    Whether you&apos;re managing a single private registry or
                     multiple registries across different environments, Wharf
                     brings all your container images into one beautiful, unified
                     dashboard. View repositories, inspect manifests, manage

@@ -9,7 +9,7 @@ A modern, beautiful Docker Registry UI for managing and exploring your container
 ## ✨ Features
 
 - **Multi-Registry Support** - Connect to multiple Docker registries simultaneously
-- **Auto-load Registry** - Configure registry URL in environment variables for automatic connection
+- **Pre-load Registry** - Configure registry URL in environment variables to pre-fill connection details
 - **Beautiful UI** - Modern, responsive design with smooth animations
 - **Tag Management** - View, explore, and delete container tags
 - **Manifest Inspector** - Examine image manifests and layer details
@@ -24,7 +24,7 @@ Install dependencies:
 pnpm install
 ```
 
-**Optional:** Auto-load a registry on startup by creating a `.env.local` file:
+**Optional:** Pre-load a registry on startup by creating a `.env.local` file:
 
 ```env
 NEXT_PUBLIC_REGISTRY_URL=https://registry.example.com
@@ -32,7 +32,7 @@ NEXT_PUBLIC_REGISTRY_USERNAME=admin
 NEXT_PUBLIC_REGISTRY_PASSWORD=password123
 ```
 
-> **Note:** Replace the dummy values above with your actual Docker registry URL and credentials.
+> **Note:** Replace the dummy values above with your actual Docker registry URL and credentials. The registry will be pre-loaded but you'll need to click "Connect" to establish the connection.
 
 Start the development server:
 
