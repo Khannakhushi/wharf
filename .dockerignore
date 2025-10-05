@@ -1,0 +1,14 @@
+Dockerfile
+.dockerignore
+.git
+.gitignore
+README.md
+node_modules
+.next
+.vercel
+*.log
+.DS_Store
+.env*.local
+.vscode
+.idea
+
